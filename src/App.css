@@ -1,0 +1,25 @@
+.app{
+    background-color: #fafafa;
+    height: 100vh;
+}
+
+.app_headerImage{
+    object-fit: contain;
+    width: 10%;
+
+}
+
+.app_header{
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    background-color: white;
+}
+
+.app_headerContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    max-width: 975px;
+    width: 100%;
+}
