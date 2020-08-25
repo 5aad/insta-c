@@ -1,0 +1,39 @@
+.post__image {
+  width: 100%;
+  height: 60%;
+  object-fit: contain;
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+}
+
+.post {
+  max-width: 614px;
+  background-color: white;
+  border: 1px solid lightgray;
+  margin: 40px 140px;
+}
+@media (max-width: 900px) {
+  .post {
+    margin: 30px auto;
+  }
+}
+
+.post__header > h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.post__text {
+  font-weight: normal;
+  padding: 20px;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.post__avatar {
+  margin-right: 10px;
+}
