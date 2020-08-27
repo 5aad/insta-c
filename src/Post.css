@@ -12,12 +12,6 @@
   border: 1px solid lightgray;
   margin-bottom: 20px;
 }
-@media (max-width: 900px) {
-  .post {
-    /* margin: 30px auto; */
-  }
-}
-
 
 .post__header > h5 {
   font-size: 14px;
@@ -39,31 +33,30 @@
   margin-right: 10px;
 }
 
-
-.post__commentBox{
+.post__commentBox {
   display: flex;
   margin-top: 10px;
   width: 100%;
 }
 
-.post__button{
+.post__button {
   flex: 0;
   background-color: transparent;
   color: lightskyblue;
   border: none;
   border-top: 1px solid lightgrey;
 }
-.post__input{
+.post__input {
   flex: 1;
   border: none;
   padding: 10px;
   border-top: 1px solid lightgrey;
 }
 
-.post__comments{
+.post__comments {
   padding: 10px 20px;
 }
 
- b {
+b {
   margin-right: 10px;
 }
