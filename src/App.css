@@ -11,26 +11,56 @@
   margin: auto 140px;
 }
 
-@media(max-width:900px){
-    .app_headerImage{
+@media (max-width: 900px) {
+  .app_headerImage {
     margin: auto 60px;
-    }
+  }
 }
 
 .app_header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   object-fit: contain;
   background-color: white;
   padding: 5px 20px;
-  
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid lightgray;
 }
 
-.signup__form{
-    display: flex;
-    flex-direction: column;
-    padding: 0px 10px 10px 10px;
+.signup__form {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px 10px 10px;
 }
 
-.signup__form > .input{
-    margin-top:20px ;
+.signup__form > .input {
+  margin-top: 20px;
+}
+
+center > h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.appPost {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.appPost__right {
+  margin-left: 10px;
+}
+@media (max-width: 700px) {
+  .appPost {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .appPost__right {
+    margin-left: 0;
+  }
 }

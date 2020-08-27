@@ -5,6 +5,8 @@ import { db, auth } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
+import ImageUpload from "./ImageUpload";
+import InstagramEmbed from "react-instagram-embed";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -64,14 +66,16 @@ function App() {
   // UserEffect -> Runs a piece of code in a specific condition
   // run every time post when changes occur in useEffect add object --> [posts]
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          post: doc.data(),
-        }))
-      );
-    });
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            post: doc.data(),
+          }))
+        );
+      });
   }, []);
 
   const signUp = (e) => {
@@ -202,24 +206,51 @@ function App() {
           alt=""
           className="app_headerImage"
         />
-      </div>
-      {user ? (
-        <Button onClick={() => auth.signOut()}>Logout</Button>
-      ) : (
-        <div>
-          <Button onClick={() => setOpenSignin(true)}>Login</Button>
-          <Button onClick={() => setOpen(true)}>Signup</Button>
-        </div>
-      )}
 
-      {posts.map(({ id, post }) => (
-        <Post
-          key={id}
-          userName={post.userName}
-          imageUrl={post.imageUrl}
-          caption={post.caption}
-        />
-      ))}
+        {user ? (
+          <Button onClick={() => auth.signOut()}>Logout</Button>
+        ) : (
+          <div>
+            <Button onClick={() => setOpenSignin(true)}>Login</Button>
+            <Button onClick={() => setOpen(true)}>Signup</Button>
+          </div>
+        )}
+      </div>
+
+      <div className="appPost">
+        <div className="appPost_left">
+          {posts.map(({ id, post }) => (
+            <Post
+              key={id}
+              postId={id}
+              user={user}
+              userName={post.userName}
+              imageUrl={post.imageUrl}
+              caption={post.caption}
+            />
+          ))}
+        </div>
+        <div className="appPost__right">
+          <InstagramEmbed
+            url="https://www.instagram.com/p/CEZGWuwIz2F/?utm_source=ig_web_copy_link"
+            hideCaption={false}
+            containerTagName="div"
+            protocol=""
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          />
+        </div>
+      </div>
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <center>
+          <h3>Sorry you need to Login</h3>
+        </center>
+      )}
     </div>
   );
 }
